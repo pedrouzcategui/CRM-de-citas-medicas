@@ -1,5 +1,5 @@
-<?php 
-include ROOT_DIR."/includes/header.php";
-echo $content;
-include ROOT_DIR."/includes/footer.php";
-?>
+<?php include ROOT_DIR."/includes/header.php" ?>
+
+<?php echo $content ?>
+
+<?php include ROOT_DIR."/includes/footer.php" ?>
