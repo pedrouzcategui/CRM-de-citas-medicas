@@ -2,12 +2,17 @@
 
 use MVC\Router;
 use MVC\Controllers\LoginController;
+use MVC\Controllers\DashboardController;
+use MVC\Controllers\CalendarController;
 
 $router = new Router();
 
 // Login/Sign Up Routes
 $router->get('/', LoginController::class, 'index');
 $router->post('/login', LoginController::class, 'login');
+
+// Dashboard
+$router->get('/dash', DashboardController::class, 'index');
 
 // Patients
 # GET /patients
@@ -28,6 +33,7 @@ $router->post('/login', LoginController::class, 'login');
 # DELETE /patients/patient:ID
 
 // Appointments
+$router->get('/appointments', CalendarController::class, 'index');
 # GET /appointments/
 # GET /appointments/:appointmentID
 # GET /appointments/add

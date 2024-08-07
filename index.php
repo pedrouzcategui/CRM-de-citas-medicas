@@ -3,9 +3,7 @@
 require 'vendor/autoload.php';
 require 'config.php';
 
-include ROOT_DIR."/includes/header.php";
-
 require 'src/routes.php';
 
+/** Dependiendo de la URL, se despacha la acción correspondiente */
 $router->dispatch();
-?>

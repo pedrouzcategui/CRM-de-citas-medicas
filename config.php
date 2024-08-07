@@ -1,4 +1,5 @@
 <?php
+// File Paths
 define( 'ROOT_DIR', dirname(__FILE__) );
 define( 'VIEWS_DIR', ROOT_DIR."/src/Views/");
 define( 'TEMPLATES_DIR', ROOT_DIR."/src/Templates/");
