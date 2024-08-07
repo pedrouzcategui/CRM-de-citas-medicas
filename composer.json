@@ -1,0 +1,15 @@
+{
+  "name": "pedro/alexis-trabajo",
+  "autoload": {
+    "psr-4": {
+      "MVC\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Pedro Uzcategui",
+      "email": "pedrouzcategui0103@gmail.com"
+    }
+  ],
+  "require": {}
+}
