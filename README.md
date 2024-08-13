@@ -12,7 +12,7 @@ Este sistema es un CRM que funciona con un .csv como base de datos y con PHP van
 ## Como instalar
 
 1. Descarga el código como un ZIP
-2. Guardalo en <TUUNIDADDEDISCODURO>:/xampp/htdocs/
+2. Guardalo en `TUUNIDADDEDISCODURO:`/xampp/htdocs/
 3. Extrae todos los archivos, y elimina el zip
 4. Activa Xampp
 5. Accede a localhost/crmmedico
@@ -62,5 +62,6 @@ Cada una de estas carpetas a su vez, tiene 5 archivos:
 - editar.php
 - actualizar.php
 - eliminar.php
+- `entidad`.csv
 
 Existe una diferencia en una de las carpetas: la carpeta `pacientes`, la cual incluye un archivo `history.php`, que se usa para realizar la visualiación del historial médico del paciente.
