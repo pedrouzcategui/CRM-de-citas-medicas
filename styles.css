@@ -1,0 +1,157 @@
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+input,
+button,
+select {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+input,
+select {
+  box-shadow: 1pt 5pt 20pt 1pt #ededed;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  background-color: #333;
+  color: white;
+}
+
+th,
+td {
+  border: 1px solid #eee;
+  padding: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 10px 0px;
+  outline: none;
+  border: none;
+  transition: filter 0.3s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form-control {
+  display: block;
+  margin-bottom: 16px;
+  label {
+    display: block;
+  }
+}
+
+.w-full {
+  width: 100%;
+}
+
+.container {
+  padding: 40px 0px;
+  width: 85%;
+  margin: 0px auto;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gap {
+  gap: 20px;
+}
+
+.block {
+  display: block;
+}
+
+.mb-sm {
+  margin-bottom: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.table-action {
+  text-decoration: none;
+  font-size: 14px;
+  background-color: gray;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  transition: filter 0.3s ease-in-out;
+}
+
+.table-action-edit {
+  background-color: darkcyan;
+}
+
+.table-action-delete {
+  background-color: darkred;
+}
+
+.table-action-extra {
+  background-color: darkblue;
+}
+
+.table-action:hover {
+  filter: brightness(0.8);
+}
+
+.h-screen {
+  height: 100vh !important;
+}
