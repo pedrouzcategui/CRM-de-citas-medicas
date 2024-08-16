@@ -62,6 +62,7 @@ Cada una de estas carpetas a su vez, tiene 5 archivos:
 - **editar.php**: Renderiza una vista para editar una entiedad.
 - **actualizar.php**: Actualiza una entidad en su CSV correspondiente.
 - **eliminar.php**: Elimina una entidad de su CSV correspondiente.
+- **entity.php**: Archivo de funciones PHP para crear, editar o eliminar usuarios.
 - **`entidad`.csv**: Archivo de CSV correspondiente, donde `entidad` refiere al nombre de su carpeta.
 
 Existe una diferencia en una de las carpetas: la carpeta `pacientes`, la cual incluye un archivo `history.php`, que se usa para realizar la visualiación del historial médico del paciente.

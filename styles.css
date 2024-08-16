@@ -19,6 +19,11 @@ select {
   border: none;
 }
 
+input[type="date"],
+input[type="time"] {
+  padding: 10px;
+}
+
 input,
 select {
   box-shadow: 1pt 5pt 20pt 1pt #ededed;

@@ -143,7 +143,6 @@ function get_filtered_records(array $fields_of_interest, string $filename, array
     return $filtered_records;
 }
 
-
 function get_unique_records(array $records)
 {
     $unique_records = [];
@@ -174,4 +173,23 @@ function get_count_of_records_if(array $records, string $field_of_interest, stri
         }
     }
     return $number_of_occurrences;
+}
+
+function get_records_where(array $records, string $field_of_interest, string $value_to_find): array
+{
+    $conditional_records = [];
+    foreach ($records as $record) {
+        if ($record[$field_of_interest] == $value_to_find) {
+            array_push($conditional_records, $record);
+        }
+    }
+    return $conditional_records;
+}
+
+function does_value_exist_in_array(array $records_array, string $field_of_interest, string $value_to_find): bool
+{
+    foreach ($records_array as $item) {
+        if ($item[$field_of_interest] == $value_to_find) return true;
+    }
+    return false;
 }

@@ -63,3 +63,39 @@ function get_param_from_url(string $param)
     if (!isset($value)) die("Fatal Error");
     return $value;
 }
+
+function get_date_in_assoc_format(string $date_string): array
+{
+    $date_array = [];
+    $x = explode("-", $date_string);
+    $date_array['year'] = $x[0];
+    $date_array['month'] = $x[1];
+    $date_array['day'] = $x[2];
+    return $date_array;
+}
+
+function get_time_in_assoc_format(string $time_string): array
+{
+    $time_array = [];
+    $x = explode(":", $time_string);
+    $time_array['hours'] = $x[0];
+    $time_array['minutes'] = $x[1];
+    return $time_array;
+}
+
+function has_date_passed($dateArray, $timeArray): bool
+{
+    // Create a DateTime object for the given date and time
+    $dateTimeString = $dateArray['year'] . '-' . $dateArray['month'] . '-' . $dateArray['day'] . ' ' .
+        $timeArray['hours'] . ':' . $timeArray['minutes'] . ':00';
+    $dateTime = new DateTime($dateTimeString);
+
+    // Get the current date and time
+    $now = new DateTime();
+
+    // Compare the two DateTime objects
+    if ($dateTime < $now) {
+        echo "The date already passed";
+    }
+    return $dateTime < $now;
+}

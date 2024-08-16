@@ -1,9 +1,20 @@
 <?php
 
 require_once '../utils.php';
+require_once '../middleware.php';
 require_once '../csv_functions.php';
 
 $appointment_id = get_param_from_url('id');
+$appointment = find_record_by(APPOINTMENTS_CSV_FILE, 'id', $appointment_id, APPOINTMENT_OBJECT_KEYS);
+
+$date = get_date_in_assoc_format($appointment["date"]);
+$time = get_time_in_assoc_format($appointment["time"]);
+$date_already_passed = has_date_passed($date, $time);
+
+if ($date_already_passed) {
+    redirect_to('/citas?error=date_already_passed');
+}
+
 $diagnosticID = $_POST['diagnosticID'];
 $patientID = $_POST['patientID'];
 $doctorID = $_POST['doctorID'];
