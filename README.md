@@ -1,6 +1,6 @@
 # CRM Medico
 
-Este sistema es un CRM que funciona con un .csv como base de datos y con PHP vanilla.
+Este sistema es un CRM que permite a clínicas gestionar su personal médico, sus pacientes, citas e historial médico. Funciona con varios archivos .csv como base de datos y con PHP 8.
 
 ![Preview de CRM médico](image.png)
 
@@ -17,10 +17,27 @@ Este sistema es un CRM que funciona con un .csv como base de datos y con PHP van
 4. Activa Xampp
 5. Accede a localhost/crmmedico
 
+## Roles y permisos de la aplicación
+
+- Adminstrador(a)
+- Enfermero(a)
+- Doctor(a)
+- Master
+
 ## Credenciales de prueba:
 
-- **User:** test@test.com
-- **Password:** test
+- Administrador
+  - **User:** test@test.com
+  - **Password:** test
+- Enfermero
+  - **User:** test@test.com
+  - **Password:** test
+- Doctor
+  - **User:** test@test.com
+  - **Password:** test
+- Master
+  - **User:** test@test.com
+  - **Password:** test
 
 ## Archivos independientes
 
@@ -34,10 +51,11 @@ Existe una serie de archivos independientes en la raiz de la aplicación
 - **middleware.php:** Archivo con funciones que son utilizadas para manejar la autenticacion y las sesiones
 - **notfound.php:** Archivo estandar para rutas no definidas en el sistema.
 - **utils.php:** Archivo con funciones genéricas
+- **image.png:** Es la imagen que viste al inicio del readme.
 
 ### Archivos de Estilos
 
-- **styles.css**
+- **styles.css**: Archivo de estilos globales de la aplicación.
 
 # Carpetas de utilidades:
 
