@@ -77,7 +77,7 @@ Cada una de estas carpetas a su vez, tiene 5 archivos:
 
 - **index.php**: Renderiza una vista mostrando un formulario para agregar una entidad y una tabla que renderiza los registros actuales.
 - **agregar.php**: Agrega una entidad en su CSV correspondiente.
-- **editar.php**: Renderiza una vista para editar una entiedad.
+- **editar.php**: Renderiza una vista para editar una entidad.
 - **actualizar.php**: Actualiza una entidad en su CSV correspondiente.
 - **eliminar.php**: Elimina una entidad de su CSV correspondiente.
 - **entity.php**: Archivo de funciones PHP para crear, editar o eliminar usuarios.
