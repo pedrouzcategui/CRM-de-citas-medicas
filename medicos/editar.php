@@ -98,7 +98,7 @@ $doctor_info = find_record_by(DOCTORS_CSV_FILE, 'id', $id, DOCTOR_OBJECT_KEYS);
                     </select>
                 </div>
                 <div class="form-control">
-                    <label for="appointments_per_day">Numero de citas por dia</label>
+                    <label for="appointments_per_day" class="block mb-sm">Numero de citas por dia</label>
                     <input name="appointments_per_day" class="form-input" type="number" min="1" value=<?= $doctor_info['appointments_number'] ?> required>
                 </div>
             </div>

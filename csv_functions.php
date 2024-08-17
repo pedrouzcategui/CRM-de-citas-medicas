@@ -111,7 +111,7 @@ function delete_row_from_csv(string $filename, string $key_of_interest, string $
             break;
         }
         if ($i == count($lines_array) - 1) {
-            die("Unable to find value of interest");
+            die("Unable to find value of interest on file: $filename");
             return false;
         }
     }
@@ -162,34 +162,4 @@ function get_unique_records(array $records)
 function convert_array_into_csv_row($fields): string
 {
     return implode(",", $fields) . "\n";
-}
-
-function get_count_of_records_if(array $records, string $field_of_interest, string $value_to_find): int
-{
-    $number_of_occurrences = 0;
-    foreach ($records as $record) {
-        if ($record[$field_of_interest] == $value_to_find) {
-            $number_of_occurrences++;
-        }
-    }
-    return $number_of_occurrences;
-}
-
-function get_records_where(array $records, string $field_of_interest, string $value_to_find): array
-{
-    $conditional_records = [];
-    foreach ($records as $record) {
-        if ($record[$field_of_interest] == $value_to_find) {
-            array_push($conditional_records, $record);
-        }
-    }
-    return $conditional_records;
-}
-
-function does_value_exist_in_array(array $records_array, string $field_of_interest, string $value_to_find): bool
-{
-    foreach ($records_array as $item) {
-        if ($item[$field_of_interest] == $value_to_find) return true;
-    }
-    return false;
 }

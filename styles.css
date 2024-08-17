@@ -20,7 +20,8 @@ select {
 }
 
 input[type="date"],
-input[type="time"] {
+input[type="time"],
+select {
   padding: 10px;
 }
 

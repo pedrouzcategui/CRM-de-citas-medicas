@@ -1,5 +1,9 @@
 <?php
 
+require_once '../citas/entity.php';
+require_once '../pacientes/entity.php';
+require_once '../medicos/entity.php';
+
 require_once '../utils.php';
 require_once '../middleware.php';
 require_once '../csv_functions.php';
@@ -10,10 +14,32 @@ if (!is_user_allowed('nurse')) {
     redirect_to_not_found();
 }
 
-$appointments = file(APPOINTMENTS_CSV_FILE);
-$patients = get_filtered_records(['id', 'name'], PATIENTS_CSV_FILE, array_keys(PATIENT_OBJECT));
-$doctors = get_filtered_records(['id', 'name'], DOCTORS_CSV_FILE, array_keys(DOCTOR_OBJECT));
+// $appointments = file(APPOINTMENTS_CSV_FILE);
+$appointments = get_appointments();
+$patients = get_patients();
+$doctors = get_doctors();
 
+$unique_patients_list =  get_unique_records(get_patients());
+$unique_doctors_list = get_unique_records(get_doctors());
+
+function build_appointments_table($appointments, $patients, $doctors): array
+{
+    $formatted_appointments_rows = [];
+    foreach ($appointments as $appt) {
+        $formatted_row = [
+            'id' => $appt['id'],
+            'Paciente' => $patients[$appt['patientID']],
+            'Doctor' => $doctors[$appt['doctorID']],
+            'Status' => $appt['status'],
+            'Fecha' => get_readable_date_spanish($appt['date']),
+            'Hora' => military_to_standard_time($appt['time'])
+        ];
+        array_push($formatted_appointments_rows, $formatted_row);
+    }
+    return $formatted_appointments_rows;
+}
+
+$formatted_appointments_rows = build_appointments_table($appointments, $unique_patients_list, $unique_doctors_list);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +48,7 @@ $doctors = get_filtered_records(['id', 'name'], DOCTORS_CSV_FILE, array_keys(DOC
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Citas</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -57,9 +83,13 @@ $doctors = get_filtered_records(['id', 'name'], DOCTORS_CSV_FILE, array_keys(DOC
         </form>
 
         <h2>Lista Citas: </h2>
-        <?= render_table(APPOINTMENT_OBJECT, $appointments) ?>
+        <?= render_table_2($formatted_appointments_rows) ?>
     </main>
 
 </body>
 
 </html>
+
+<?php
+// <?= render_table_(APPOINTMENT_OBJECT, $appointments) 
+?>

@@ -15,23 +15,27 @@ function build_medical_history($appointments, $doctors)
     foreach ($appointments as $appointment) {
         $record = [
             'id' => $appointment['id'],
-            'date' => $appointment['date'],
-            'status' => $appointment['status'],
-            'doctorID' => $appointment['doctorID'],
-            'doctorName' => $doctors[$appointment['doctorID']],
-            'diagnostic' => find_record_by(DIAGNOSTICS_CSV_FILE, 'id', $appointment['diagnosticID'], DIAGNOSTIC_OBJECT_KEYS)['description'],
+            'Fecha' => $appointment['date'],
+            'Status' => $appointment['status'],
+            'ID Doctor' => $appointment['doctorID'],
+            'Nombre Doctor' => $doctors[$appointment['doctorID']],
+            'Diagnostico' => find_record_by(DIAGNOSTICS_CSV_FILE, 'id', $appointment['diagnosticID'], DIAGNOSTIC_OBJECT_KEYS)['description'],
         ];
         array_push($medical_history, $record);
     }
 
-    $medical_history = sort_by_field($medical_history, 'date', true);
-    $sorted_medical_history_csv = [];
-    foreach ($medical_history as $record) {
-        $record = convert_array_into_csv_row($record);
-        array_push($sorted_medical_history_csv, $record);
-    }
-
-    return $sorted_medical_history_csv;
+    $medical_history = sort_by_field($medical_history, 'Fecha', true);
+    $medical_history = array_map(function ($appointment) {
+        return [
+            'id' => $appointment['id'],
+            'Fecha' => get_readable_date_spanish($appointment['Fecha']),
+            'Status' => $appointment['Status'],
+            'ID Doctor' => $appointment['ID Doctor'],
+            'Nombre Doctor' => $appointment['Nombre Doctor'],
+            'Diagnostico' => $appointment['Diagnostico'],
+        ];
+    }, $medical_history);
+    return $medical_history;
 }
 
 function get_appointments_insights(array $appointments): array
@@ -122,7 +126,7 @@ $medical_history = build_medical_history($appointments, $doctors);
                 </span>
             </div>
         </div>
-        <?= render_table(MEDICAL_HISTORY_KEYS, $medical_history, [], true, true) ?>
+        <?= render_table_2($medical_history, [], true, true) ?>
     </main>
 
 </body>

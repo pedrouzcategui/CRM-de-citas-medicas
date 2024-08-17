@@ -1,5 +1,10 @@
 <?php
-// Recibir Datos
+
+// Entidades
+require_once "../citas/entity.php";
+require_once "../diagnosticos/entity.php";
+
+// Utilidades
 require_once "../utils.php";
 require_once "../csv_functions.php";
 
@@ -13,8 +18,14 @@ $status = 'confirmed';
 
 $appointment_fields = [$appointmentID, $patientID, $doctorID, $date, $time, $status, $diagnosticID];
 $diagnostic_fields = [$diagnosticID, $appointmentID, $patientID, $doctorID, " "];
-add_row_to_csv(APPOINTMENTS_CSV_FILE, $appointment_fields, APPOINTMENT_OBJECT_KEYS);
-add_row_to_csv(DIAGNOSTICS_CSV_FILE, $diagnostic_fields, DIAGNOSTIC_OBJECT_KEYS);
+
+if (!is_doctor_available_for_another_appointment_on_this_date($doctorID, $date, $time)) {
+    //TODO: Redirect
+    dd('This slot is not available');
+}
+
+$appointment = create_appointment($appointment_fields);
+$diagnostic = create_diagnostic($diagnostic_fields);
 
 echo "Appointment Created\n";
 echo "<a href='/crmmedico/citas/index.php'>Volver a citas</a>";

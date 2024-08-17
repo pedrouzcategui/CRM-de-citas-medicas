@@ -19,7 +19,7 @@ $appointment_info = array_combine(APPOINTMENT_OBJECT_KEYS, $appointment_row_valu
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Cita</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 

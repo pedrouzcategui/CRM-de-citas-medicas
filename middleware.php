@@ -45,7 +45,7 @@ function redirect_to_not_found(): void
     header('Location: http://localhost/crmmedico/notfound.php');
 }
 
-function redirect_to(string $uri): void
+function redirect_to(string $uri, string $message = ''): void
 {
     header("Location: http://localhost/crmmedico$uri");
     die();
