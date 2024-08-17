@@ -49,10 +49,7 @@ $patients = file('pacientes.csv');
                         </label>
                     </div>
                 </div>
-                <div class="form-control">
-                    <label for="birthday" class="block mb-sm">Fecha de nacimiento</label>
-                    <input type="date" name="birthday" class="w-full form-input" required />
-                </div>
+                <?= render_input('date', 'birthday', 'Fecha de nacimiento', '', '', true) ?>
             </div>
             <div class="form-control">
                 <button type="submit">Agregar Paciente</button>

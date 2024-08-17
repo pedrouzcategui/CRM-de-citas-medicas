@@ -9,6 +9,7 @@ require_once '../middleware.php';
 require_once '../csv_functions.php';
 require_once '../components/table.php';
 require_once '../components/select.php';
+require_once '../components/input.php';
 
 if (!is_user_allowed('nurse')) {
     redirect_to_not_found();
@@ -62,20 +63,10 @@ $formatted_appointments_rows = build_appointments_table($appointments, $unique_p
 
         <form method="POST" action="agregar.php">
             <div class="grid grid-cols-2 gap" style="margin-bottom: 20px;">
-                <div>
-                    <?= render_select('patientID', 'Paciente', $patients, 'id', 'name') ?>
-                </div>
-                <div>
-                    <?= render_select('doctorID', 'Doctor', $doctors, 'id', 'name') ?>
-                </div>
-                <div>
-                    <label class="block mb-sm" for="">Fecha</label>
-                    <input class="w-full" name="date" type="date">
-                </div>
-                <div>
-                    <label class="block mb-sm" for="">Time</label>
-                    <input class="w-full" name="time" type="time">
-                </div>
+                <?= render_select('patientID', 'Paciente', $patients, 'id', 'name') ?>
+                <?= render_select('doctorID', 'Doctor', $doctors, 'id', 'name') ?>
+                <?= render_input('date', 'date', 'Fecha', '', '', true) ?>
+                <?= render_input('time', 'time', 'Hora', '', '', true) ?>
             </div>
             <div class="form-control">
                 <button type="submit">Agregar Cita</button>
@@ -89,7 +80,3 @@ $formatted_appointments_rows = build_appointments_table($appointments, $unique_p
 </body>
 
 </html>
-
-<?php
-// <?= render_table_(APPOINTMENT_OBJECT, $appointments) 
-?>

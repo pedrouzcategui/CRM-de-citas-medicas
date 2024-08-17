@@ -2,6 +2,7 @@
 
 require_once '../utils.php';
 require_once '../csv_functions.php';
+require_once '../components/input.php';
 
 $id = get_param_from_url('id');
 $patient_info = find_record_by(PATIENTS_CSV_FILE, 'id', $id, PATIENT_OBJECT_KEYS);
@@ -24,14 +25,8 @@ $patient_info = find_record_by(PATIENTS_CSV_FILE, 'id', $id, PATIENT_OBJECT_KEYS
 
         <form method="POST" action="actualizar.php?id=<?= $patient_info['id'] ?>">
             <div class="grid grid-cols-2 gap" style="margin-bottom: 20px;">
-                <div>
-                    <label class="block mb-sm" for="name">Nombre</label>
-                    <input class="form-input" type="text" name="name" placeholder="Ex: Pedro Pérez" required value="<?= $patient_info['name'] ?>">
-                </div>
-                <div>
-                    <label class="block mb-sm" for="email">Email</label>
-                    <input class="form-input" type="email" name="email" required placeholder="Ex: pedroperez@gmail.com" value="<?= $patient_info['email'] ?>">
-                </div>
+                <?= render_input('text', 'name', 'Nombre', $patient_info['name'], 'Ex: Pedro Pérez', true) ?>
+                <?= render_input('email', 'email', 'Email', $patient_info['email'], 'Ex: pedroperez@gmail.com', true) ?>
             </div>
             <div class="grid grid-cols-2 gap">
                 <div class="form-control flex flex-col justify-center">
@@ -47,10 +42,7 @@ $patient_info = find_record_by(PATIENTS_CSV_FILE, 'id', $id, PATIENT_OBJECT_KEYS
                         </label>
                     </div>
                 </div>
-                <div class="form-control">
-                    <label for="birthday" class="block mb-sm">Fecha de nacimiento</label>
-                    <input type="date" name="birthday" class="w-full form-input" required value=<?= $patient_info['birthdate'] ?> />
-                </div>
+                <?= render_input('date', 'birthday', 'Fecha de nacimiento', $patient_info['birthdate'], '', true) ?>
             </div>
             <div class="form-control">
                 <button type="submit">Editar Paciente</button>
