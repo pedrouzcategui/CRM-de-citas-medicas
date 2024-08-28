@@ -2,8 +2,6 @@
 
 Este sistema es un CRM que permite a clínicas gestionar su personal médico, sus pacientes, citas e historial médico. Funciona con varios archivos .csv como base de datos y con PHP 8.
 
-![Preview de CRM médico](image.png)
-
 ## Tech Stack
 
 - XAMPP v3.3.0
