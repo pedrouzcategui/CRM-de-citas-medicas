@@ -133,7 +133,6 @@ function get_readable_date_spanish(string $fecha_formato_db)
 {
     // Convertimos la fecha en un objeto DateTime para facilitar la manipulación
     $fecha = new DateTime($fecha_formato_db);
-
     // Definimos un array asociativo para los nombres de los meses
     $meses = array(
         1 => 'Enero',
@@ -150,10 +149,9 @@ function get_readable_date_spanish(string $fecha_formato_db)
         12 => 'Diciembre'
     );
 
-    $dia = $fecha->format('d');
-    $mes = $fecha->format('m');
+    $dia = ltrim($fecha->format('d'), "0");
+    $mes = ltrim($fecha->format('m'), "0");
     $ano = $fecha->format('Y');
-
     return "$dia de $meses[$mes], $ano";
 }
 

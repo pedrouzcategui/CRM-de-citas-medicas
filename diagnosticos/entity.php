@@ -10,6 +10,11 @@ function find_diagnostic(string $diagnostic_id): array
     return $diagnostic;
 }
 
+function get_diagnostics(): array
+{
+    return get_csv_as_array(DIAGNOSTICS_CSV_FILE, DIAGNOSTIC_OBJECT_KEYS);
+}
+
 function create_diagnostic(array $diagnostic_fields): array
 {
     $diagnostic = add_row_to_csv(DIAGNOSTICS_CSV_FILE, $diagnostic_fields, DIAGNOSTIC_OBJECT_KEYS);

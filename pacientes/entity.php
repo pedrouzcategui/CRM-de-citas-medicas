@@ -1,4 +1,5 @@
 <?php
+require_once '../citas/entity.php';
 require_once '../utils.php';
 require_once '../middleware.php';
 require_once '../csv_functions.php';
@@ -37,6 +38,10 @@ function delete_patient(string $patient_id): bool
 
     if ($has_patient_shown_to_any_appointments) {
         throw new Exception("Patient already showed to appointments");
+    }
+
+    foreach ($appointments as $appt) {
+        delete_appointment($appt['id']);
     }
 
     return delete_row_from_csv(PATIENTS_CSV_FILE, 'id', $patient['id'], PATIENT_OBJECT_KEYS);

@@ -6,37 +6,33 @@ Este sistema es un CRM que permite a clínicas gestionar su personal médico, su
 
 ## Tech Stack
 
-- XAMPP
-- PHP 8
+- XAMPP v3.3.0
+- PHP 8.3
 
 ## Como instalar
 
 1. Descarga el código como un ZIP
 2. Guardalo en `TUUNIDADDEDISCODURO:`/xampp/htdocs/
 3. Extrae todos los archivos, y elimina el zip
-4. Activa Xampp
+4. Activa el modulo de apache XAMPP
 5. Accede a localhost/crmmedico
 
 ## Roles y permisos de la aplicación
 
-- Adminstrador(a)
-- Enfermero(a)
-- Doctor(a)
-- Master
+- Adminstrador(a): El administrador tiene la habilidad de manejar usuarios y perfiles de doctores.
+- Enfermero(a): El enfermero tiene la habilidad de manejar pacientes, y sus citas.
+- Doctor(a): El doctor tiene la habilidad de editar diagnosticos de pacientes.
 
 ## Credenciales de prueba:
 
 - Administrador
-  - **User:** test@test.com
+  - **User:** test@admin.com
   - **Password:** test
 - Enfermero
-  - **User:** test@test.com
+  - **User:** test@nurse.com
   - **Password:** test
 - Doctor
-  - **User:** test@test.com
-  - **Password:** test
-- Master
-  - **User:** test@test.com
+  - **User:** test@doctor.com
   - **Password:** test
 
 ## Archivos independientes

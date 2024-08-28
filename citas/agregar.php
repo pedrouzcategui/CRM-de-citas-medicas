@@ -20,7 +20,6 @@ $appointment_fields = [$appointmentID, $patientID, $doctorID, $date, $time, $sta
 $diagnostic_fields = [$diagnosticID, $appointmentID, $patientID, $doctorID, " "];
 
 if (!is_doctor_available_for_another_appointment_on_this_date($doctorID, $date, $time)) {
-    //TODO: Redirect
     dd('This slot is not available');
 }
 
