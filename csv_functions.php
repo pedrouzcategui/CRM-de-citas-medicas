@@ -3,6 +3,22 @@
 require_once 'globals.php';
 require_once 'utils.php';
 
+/**
+ * 
+ * Esta función toma un arreglo unidimensional, y le asigna keys, para su uso facilitado
+ * 
+ * Entrada:
+ * array $entity_keys
+ * array $values
+ * 
+ * Ejemplo:
+ * [
+ *    'key1' => 'value',
+ *    'key2' => 'value',
+ * ]
+ * 
+ */
+
 function map_row_values_to_entity(array $entity_keys, array $values): array
 {
     $keys_length = count($entity_keys);
@@ -14,6 +30,12 @@ function map_row_values_to_entity(array $entity_keys, array $values): array
     }
     return array_combine($entity_keys, $values);
 }
+
+/**
+ * 
+ * Esta función accepta un filename, y un arreglo de propiedades, y devuelve un archivo CSV como un arreglo multidimensional.
+ * 
+ */
 
 function get_csv_as_array(string $filename, array $entity_keys)
 {
@@ -27,6 +49,12 @@ function get_csv_as_array(string $filename, array $entity_keys)
     }
     return $file_array;
 }
+
+/**
+ * 
+ * Esta función se usa para encontrar un valor en una columna de interés en cualquiera de los CSVs.
+ * 
+ */
 
 function find_record_by(string $filename, string $key_of_interest, string $value_to_find, array $entity_keys): array | null
 {
@@ -43,6 +71,12 @@ function find_record_by(string $filename, string $key_of_interest, string $value
     }
     return null;
 }
+
+/**
+ * 
+ * Esta función busca un record en un CSV determinado basado en su ID.
+ * 
+ */
 
 function find_records_by_id(string $filename, string $key_of_interest, string $value_to_find, array $entity_keys): array
 {
@@ -61,6 +95,12 @@ function find_records_by_id(string $filename, string $key_of_interest, string $v
     return $records;
 }
 
+/**
+ * 
+ * Esta función añade una nueva fila al CSV.
+ * 
+ */
+
 function add_row_to_csv(string $filename, array $fields, array $entity_keys)
 {
     if (!file_exists($filename)) die("File $filename doesn't exist");
@@ -70,6 +110,12 @@ function add_row_to_csv(string $filename, array $fields, array $entity_keys)
     fclose($file);
     return map_row_values_to_entity($entity_keys, $fields);
 }
+
+/**
+ * 
+ * Esta función edita una determinada fila de un CSV.
+ * 
+ */
 
 function edit_row_from_csv(string $filename, string $key_of_interest, string $value_to_find, array $new_fields, array $entity_keys)
 {
@@ -96,6 +142,12 @@ function edit_row_from_csv(string $filename, string $key_of_interest, string $va
 
     return map_row_values_to_entity($entity_keys, $fields);
 }
+
+/**
+ * 
+ * Esta función elimina una fila de un CSV
+ * 
+ */
 
 function delete_row_from_csv(string $filename, string $key_of_interest, string $value_to_find, array $entity_keys)
 {
@@ -126,6 +178,12 @@ function delete_row_from_csv(string $filename, string $key_of_interest, string $
     return true;
 }
 
+/**
+ * 
+ * Esta función toma un arreglo multidimensional, y lo filtra basado en las columnas de interés
+ * 
+ */
+
 function get_filtered_records(array $fields_of_interest, string $filename, array $entity_keys)
 {
     $mapped_records = [];
@@ -143,6 +201,12 @@ function get_filtered_records(array $fields_of_interest, string $filename, array
     return $filtered_records;
 }
 
+/**
+ * 
+ * Esta función devuelve los records unicos en un arreglo de propiedades ID y Name.
+ * 
+ */
+
 function get_unique_records(array $records)
 {
     $unique_records = [];
@@ -158,6 +222,14 @@ function get_unique_records(array $records)
 
     return $unique_records;
 }
+
+/**
+ * 
+ * 
+ * Esta función se usa para convertir un arreglo en su representación de fila en un CSV
+ * 
+ * 
+ */
 
 function convert_array_into_csv_row($fields): string
 {

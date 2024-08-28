@@ -80,3 +80,5 @@ Cada una de estas carpetas a su vez, tiene 5 archivos:
 - **`entidad`.csv**: Archivo de CSV correspondiente, donde `entidad` refiere al nombre de su carpeta.
 
 Existe una diferencia en una de las carpetas: la carpeta `pacientes`, la cual incluye un archivo `history.php`, que se usa para realizar la visualiación del historial médico del paciente.
+
+Es importante resaltar que todas las funciones de los archivos de tipo `entity.php` son funciones de primer orden que reciben/usan las funciones descritsa en `csv_functions.php`. La razón de tener entidades, es debido a que es más amigable para re-usarlo a lo largo de la aplicación.

@@ -1,6 +1,6 @@
 <?php
 
-/**File Paths */
+/*File Paths */
 
 define('ROOT_PATH', __DIR__);
 define('PATIENTS_FOLDER_PATH', __DIR__ . '/pacientes');
